@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import getAllArticles from '../../api.js'
+import {getAllArticles} from '../../api.js'
 
 import ArticleCard from "./ArticleCard"
+import { Link } from "react-router-dom"
 
 const ArticleContainer = () => {
 
@@ -9,8 +10,8 @@ const ArticleContainer = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        getAllArticles().then((articles) => {
-            setArticles(articles)
+        getAllArticles().then((article) => {
+            setArticles(article)
             setLoading(false)
         })
     }, []);
@@ -22,7 +23,11 @@ const ArticleContainer = () => {
     return (
         <>
             {articles.map(article => {
-                return <ArticleCard key={article.article_id} article={article} />
+                return (
+                    <Link key={article.article_id} to={`/${article.article_id}/${encodeURIComponent(article.title)}`}>
+                        <ArticleCard article={article} />
+                    </Link>
+                )
             })}
         </>
     )

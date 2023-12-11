@@ -1,3 +1,7 @@
+import { Routes, Route } from 'react-router-dom';
+
+import ArticlePage from '../pages/ArticlePage';
+
 import Header from './components/Header'
 import ArticleContainer from './components/ArticleContainer'
 
@@ -8,7 +12,10 @@ function App() {
   return (
     <>
     <Header />
-    <ArticleContainer />
+    <Routes>
+        <Route path="/" element={<ArticleContainer />} />
+        <Route path="/:article_id/:article_name" element={<ArticlePage />}/>
+      </Routes>
     </>
   )
 }
