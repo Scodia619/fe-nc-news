@@ -20,3 +20,12 @@ export const getArticleById = (article_id) => {
             throw error; // Re-throw the error to handle it where the function is called
         });
 };
+
+export const getCommentsByArticle = (article_id) => {
+    return api.get(`/articles/${article_id}/comments`)
+        .then(res => res.data.comments)
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            throw error; // Re-throw the error to handle it where the function is called
+        });
+};
