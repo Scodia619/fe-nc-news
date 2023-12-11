@@ -15,8 +15,6 @@ const ArticleContainer = () => {
         })
     }, []);
 
-    console.log(articles);
-
     if(loading){
         return <h1>Loading</h1>
     }
