@@ -12,7 +12,6 @@ const ArticlePage = () => {
 
     const [currentArticle, setCurrentArticle] = useState([])
     const [loading, setLoading] = useState(true)
-    console.log(currentArticle)
 
     useEffect(()=> {
         getArticleById(article_id).then(article => {
@@ -24,7 +23,7 @@ const ArticlePage = () => {
     if(loading) return <h1>Loading</h1>
 
     return (
-    <section>
+    <section className="d-flex flex-column">
         <ArticleContent currentArticle={currentArticle}/>
         <ArticleVoting currentArticle={currentArticle}/>
         <CommentContent/>

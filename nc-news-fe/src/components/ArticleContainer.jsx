@@ -24,7 +24,7 @@ const ArticleContainer = () => {
         <>
             {articles.map(article => {
                 return (
-                    <Link key={article.article_id} to={`/${article.article_id}/${encodeURIComponent(article.title)}`}>
+                    <Link key={article.article_id} to={`/${article.topic}/${encodeURIComponent(article.article_id)}`}>
                         <ArticleCard article={article} />
                     </Link>
                 )

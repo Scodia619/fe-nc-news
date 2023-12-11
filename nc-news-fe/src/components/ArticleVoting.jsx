@@ -1,6 +1,6 @@
 const ArticleVoting = ({currentArticle}) => {
     return (
-        <section>
+        <section className="d-flex justify-content-around">
             <button>Upvote</button>
             <h1>{currentArticle.votes}</h1>
             <button>Downvote</button>

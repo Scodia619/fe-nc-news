@@ -14,7 +14,7 @@ function App() {
     <Header />
     <Routes>
         <Route path="/" element={<ArticleContainer />} />
-        <Route path="/:article_id/:article_name" element={<ArticlePage />}/>
+        <Route path="/:article_topic/:article_id" element={<ArticlePage />}/>
       </Routes>
     </>
   )
