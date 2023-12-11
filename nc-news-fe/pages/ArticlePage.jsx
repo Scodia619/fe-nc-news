@@ -11,13 +11,17 @@ const ArticlePage = () => {
     const {article_id} = useParams();
 
     const [currentArticle, setCurrentArticle] = useState([])
+    const [loading, setLoading] = useState(true)
     console.log(currentArticle)
 
     useEffect(()=> {
         getArticleById(article_id).then(article => {
             setCurrentArticle(article)
+            setLoading(false)
         })
     }, [])
+
+    if(loading) return <h1>Loading</h1>
 
     return (
     <section>
