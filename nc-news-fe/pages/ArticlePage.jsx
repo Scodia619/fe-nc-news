@@ -3,6 +3,8 @@ import {getArticleById} from '../api.js'
 import { useEffect, useState } from 'react';
 
 import ArticleContent from '../src/components/ArticleContent.jsx';
+import ArticleVoting from '../src/components/ArticleVoting.jsx';
+import CommentContent from '../src/components/CommentContent.jsx';
 
 const ArticlePage = () => {
 
@@ -17,7 +19,13 @@ const ArticlePage = () => {
         })
     }, [])
 
-    return (<ArticleContent currentArticle={currentArticle}/>)
+    return (
+    <section>
+        <ArticleContent currentArticle={currentArticle}/>
+        <ArticleVoting currentArticle={currentArticle}/>
+        <CommentContent/>
+    </section>
+    )
 }
 
 export default ArticlePage
