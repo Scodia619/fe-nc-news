@@ -29,3 +29,9 @@ export const getCommentsByArticle = (article_id) => {
             throw error; // Re-throw the error to handle it where the function is called
         });
 };
+
+export const patchVotesByArticleId = (article_id, inc_votes) => {
+    api.patch(`articles/${article_id}`, {inc_votes: inc_votes}).then(res => {
+        console.log(res)
+    })
+}
