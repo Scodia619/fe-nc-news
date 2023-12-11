@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react"
-import axios from 'axios'
+import getAllArticles from '../../api.js'
 
 import ArticleCard from "./ArticleCard"
 
 const ArticleContainer = () => {
 
     const [articles, setArticles] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        axios.get("https://nc-news-a8e3.onrender.com/api/articles")
-            .then(({data: {articles}}) => {
-                setArticles(articles)
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+        getAllArticles().then((articles) => {
+            setArticles(articles)
+            setLoading(false)
+        })
     }, []);
 
     console.log(articles);
+
+    if(loading){
+        return <h1>Loading</h1>
+    }
 
     return (
         <>
