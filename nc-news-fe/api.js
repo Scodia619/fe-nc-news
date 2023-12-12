@@ -6,10 +6,6 @@ const api = axios.create({
 export const getAllArticles = () => {
     return api.get("/articles")
         .then(res => res.data.articles)
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            throw error; // Re-throw the error to handle it where the function is called
-        });
 };
 
 export const getArticleById = (article_id) => {
