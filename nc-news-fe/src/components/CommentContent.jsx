@@ -4,12 +4,12 @@ import { postCommentById } from "../../api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const CommentContent = ({ comments }) => {
+const CommentContent = ({ comments, setComments }) => {
   const [comment, setComment] = useState("");
   const [showComments, setShowComments] = useState(false);
 
-  const notify = () => {
-    toast("Comment Posted", {
+  const notify = (message) => {
+    toast(message, {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -26,16 +26,11 @@ const CommentContent = ({ comments }) => {
     postCommentById(comments[0].article_id, {
       username: "tickle122",
       body: comment,
-    })
-      .then((res) => {
-        notify();
-        setRecentComment(comment);
+    }).then((res) => {
+        notify("Comment Posted");
         setComment("");
-      })
-      .catch((err) => {
-        console.error("Error response data:", err.response.data);
-        console.error("Error status:", err.response.status);
-        console.error("Error headers:", err.response.headers);
+      }).catch((err) => {
+        alert(err)
       });
   };
 
