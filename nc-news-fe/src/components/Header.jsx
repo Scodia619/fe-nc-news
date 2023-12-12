@@ -1,6 +1,8 @@
 const Header = () => {
     return (
-        <h1>NC News</h1>
+        <section className="d-flex justify-content-center">
+            <h1>NC News</h1>
+        </section>
     )
 }
 
