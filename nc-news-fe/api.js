@@ -15,23 +15,16 @@ export const getAllArticles = () => {
 export const getArticleById = (article_id) => {
     return api.get(`/articles/${article_id}`)
         .then(res => res.data.article)
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            throw error; // Re-throw the error to handle it where the function is called
-        });
 };
 
 export const getCommentsByArticle = (article_id) => {
     return api.get(`/articles/${article_id}/comments`)
         .then(res => res.data.comments)
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            throw error; // Re-throw the error to handle it where the function is called
-        });
 };
 
 export const patchVotesByArticleId = (article_id, inc_votes) => {
     api.patch(`articles/${article_id}`, {inc_votes: inc_votes}).then(res => {
-        console.log(res)
+    }).catch(err => {
+        alert(err)
     })
 }
