@@ -24,3 +24,7 @@ export const patchVotesByArticleId = (article_id, inc_votes) => {
         alert(err)
     })
 }
+
+export const postCommentById = (article_id, comment) => {
+    return api.post(`articles/${article_id}/comments`, comment).then(res=>{})
+}
