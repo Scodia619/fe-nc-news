@@ -34,4 +34,4 @@ const CommentContent = ({ comments }) => {
   );
 };
 
-export default CommentContent;
+export default CommentContent

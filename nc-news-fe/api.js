@@ -17,3 +17,10 @@ export const getCommentsByArticle = (article_id) => {
     return api.get(`/articles/${article_id}/comments`)
         .then(res => res.data.comments)
 };
+
+export const patchVotesByArticleId = (article_id, inc_votes) => {
+    api.patch(`articles/${article_id}`, {inc_votes: inc_votes}).then(res => {
+    }).catch(err => {
+        alert(err)
+    })
+}
