@@ -22,7 +22,7 @@ const ArticlePage = () => {
         getCommentsByArticle(article_id).then(dbComments => {
             setComments(dbComments)
         })
-    }, [comments])
+    }, [])
 
     if(loading) return <h1>Loading</h1>
 
@@ -30,7 +30,7 @@ const ArticlePage = () => {
     <section className="d-flex flex-column">
         <ArticleContent currentArticle={currentArticle}/>
         <ArticleVoting currentArticle={currentArticle}/>
-        <CommentContent comments={comments} setComments={setComments}/>
+        <CommentContent comments={comments}/>
     </section>
     )
 }
