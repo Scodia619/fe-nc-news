@@ -11,7 +11,7 @@ const CommentContent = ({comments}) => {
         <form className="d-flex flex-column align-items-center">
             <div className="d-flex">
             <label htmlFor="comment">
-                <input type="text" value={comment} onChange={(e)=>setComment(e.target.value)}/>
+                <input type="text" value={comment} id="comment" onChange={(e)=>setComment(e.target.value)}/>
             </label>
             <button>Add</button>
             </div>
