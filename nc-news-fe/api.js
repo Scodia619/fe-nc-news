@@ -6,10 +6,6 @@ const api = axios.create({
 export const getAllArticles = () => {
     return api.get("/articles")
         .then(res => res.data.articles)
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            throw error; // Re-throw the error to handle it where the function is called
-        });
 };
 
 export const getArticleById = (article_id) => {
@@ -27,4 +23,8 @@ export const patchVotesByArticleId = (article_id, inc_votes) => {
     }).catch(err => {
         alert(err)
     })
+}
+
+export const postCommentById = (article_id, comment) => {
+    return api.post(`articles/${article_id}/comments`, comment).then(res=>{})
 }
