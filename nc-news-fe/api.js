@@ -26,5 +26,7 @@ export const patchVotesByArticleId = (article_id, inc_votes) => {
 }
 
 export const postCommentById = (article_id, comment) => {
-    return api.post(`articles/${article_id}/comments`, comment).then(res=>{})
+    return api.post(`articles/${article_id}/comments`, comment).then(res=>{
+        return res.data.comment
+    })
 }

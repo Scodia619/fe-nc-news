@@ -33,10 +33,11 @@ const CommentContent = ({ comments, setComments }) => {
       username: "tickle122",
       body: comment,
     }).then((res) => {
-        notify("Comment Posted");
+        notify("Posted the comment")
         setComment("");
-        setComments((prev) => {[...prev, comment]})
+        setComments((prevComments) => [res, ...prevComments]);
       }).catch((err) => {
+        console.log(err)
         notify("Something went wrong")
       }).finally(()=>{
         setIsSubmitting(false)
@@ -64,7 +65,7 @@ const CommentContent = ({ comments, setComments }) => {
         </div>
       </form>
       <button onClick={() => setShowComments(true)}>View All Comments</button>
-      {showComments ? (
+      {comments && comments.length > 0 && showComments ? (
         comments.map((comment) => {
           return <CommentCard key={comment.comment_id} comment={comment} />;
         })
