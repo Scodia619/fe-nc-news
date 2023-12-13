@@ -27,6 +27,7 @@ const CommentContent = ({ comments, setComments }) => {
     setIsSubmitting(true);
     if(comment === ""){
         notify("No text recieved")
+        setIsSubmitting(false)
         return;
     }
     postCommentById(comments[0].article_id, {
@@ -52,11 +53,12 @@ const CommentContent = ({ comments, setComments }) => {
       >
         <div className="d-flex">
         <label htmlFor="comment">
-            <input
-              type="text"
+        <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              disabled={isSubmitting} // Disable input field while submitting
+              disabled={isSubmitting}
+              rows={2} // Set the desired number of rows for the textarea
+              cols={30} // Set the desired number of columns for the textarea
             />
           </label>
           <button type="submit" disabled={isSubmitting}> {/* Disable button while submitting */}
