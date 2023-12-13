@@ -30,7 +30,7 @@ const ArticlePage = () => {
     <section className="d-flex flex-column">
         <ArticleContent currentArticle={currentArticle}/>
         <ArticleVoting currentArticle={currentArticle}/>
-        <CommentContent comments={comments}/>
+        <CommentContent comments={comments} setComments={setComments}/>
     </section>
     )
 }

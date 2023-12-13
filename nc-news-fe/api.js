@@ -28,3 +28,9 @@ export const patchVotesByArticleId = (article_id, inc_votes) => {
 export const postCommentById = (article_id, comment) => {
     return api.post(`articles/${article_id}/comments`, comment).then(res=>{})
 }
+
+export const deleteCommentById = (comment_id) => {
+    return api.delete(`/comments/${comment_id}`).then(res=> {
+        console.log(res)
+    })
+}

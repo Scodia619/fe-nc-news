@@ -66,7 +66,7 @@ const CommentContent = ({ comments, setComments }) => {
       <button onClick={() => setShowComments(true)}>View All Comments</button>
       {showComments ? (
         comments.map((comment) => {
-          return <CommentCard key={comment.comment_id} comment={comment} />;
+          return <CommentCard key={comment.comment_id} comment={comment} setComments={setComments}/>;
         })
       ) : (
         <></>
