@@ -3,7 +3,7 @@ import { deleteCommentById } from "../../api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const CommentCard = ({ comment, setComment }) => {
+const CommentCard = ({ comment, setComments }) => {
   const notify = (message) => {
     toast(message, {
       position: "top-center",
@@ -17,10 +17,12 @@ const CommentCard = ({ comment, setComment }) => {
     });
   };
 
-  const handleDelete = () => {
+  const handleDelete = (commentId) => {
     deleteCommentById(comment.comment_id).then(() => {
       notify("Comment Deleted");
-      setComments((prevVals))
+      setComments((prevComments) => {
+        return prevComments.filter((comment) => comment.comment_id !== commentId);
+      });
     });
   };
 
@@ -28,7 +30,7 @@ const CommentCard = ({ comment, setComment }) => {
     <section className="border border-black p-2 m-2">
       <h6>{comment.body}</h6>
       <CommentVoting currentComment={comment} />
-      <button onClick={handleDelete}>Delete</button>
+      <button onClick={()=>{handleDelete(comment.comment_id)}}>Delete</button>
       <ToastContainer
         position="top-center"
         autoClose={5000}
