@@ -38,7 +38,6 @@ const CommentContent = ({ comments, setComments }) => {
         setComment("");
         setComments((prevComments) => [res, ...prevComments]);
       }).catch((err) => {
-        console.log(err)
         notify("Something went wrong")
       }).finally(()=>{
         setIsSubmitting(false)
