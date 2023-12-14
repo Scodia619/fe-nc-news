@@ -30,3 +30,9 @@ export const postCommentById = (article_id, comment) => {
         return res.data.comment
     })
 }
+
+export const getArticlesWithQueries = (params) => {
+    return api.get("/articles", params).then(res => {
+        return res.data.articles
+    })
+}
