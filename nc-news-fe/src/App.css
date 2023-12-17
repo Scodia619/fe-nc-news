@@ -70,7 +70,9 @@ body{
     min-width: 20em;
     min-height: 5em;
     margin: 0.75em;
-    padding: 0.75em
+    padding: 0.75em;
+    display: flex;
+    flex-direction: column;
 }
 
 .comment-voting{
@@ -96,4 +98,11 @@ body{
     background-color: white;
     color: #F34213;
     padding: 0.3em;
+}
+
+.delete-btn{
+    margin-top: 1em;;
+    width: 95%;
+    position: relative;
+    left: 0.4em;
 }

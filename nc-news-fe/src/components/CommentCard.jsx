@@ -44,8 +44,8 @@ const CommentCard = ({ comment, setComments }) => {
   };
 
   return (
-    <section className="border border-black p-2 m-2">
-      <h6>{comment.body}</h6>
+    <section className="comment-card">
+      <h6 className="comment-body">{comment.body}</h6>
       <div className="d-flex justify-content-around">
         <p className="fw-bold">{comment.author}</p>
         <p className="fw-bold  align-items-center">
@@ -54,7 +54,7 @@ const CommentCard = ({ comment, setComments }) => {
       </div>
       <CommentVoting currentComment={comment} />
       {comment.author === username ? (
-      <button
+      <button className="button delete-btn"
         onClick={() => {
           handleDelete(comment.comment_id);
         }}
