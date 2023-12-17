@@ -24,10 +24,10 @@ const ArticleContainer = () => {
 
     return (
         <>
-        <QueriesAndTopics setParams={setParams} params={params}/>
+        <QueriesAndTopics setParams={setParams} params={params} articles={articles}/>
             {articles.map((article) => {
                 return (
-                    <Link key={article.article_id} to={`/${article.topic}/${encodeURIComponent(article.article_id)}`}>
+                    <Link className="article-link" key={article.article_id} to={`/${article.topic}/${encodeURIComponent(article.article_id)}`}>
                         <ArticleCard article={article} />
                     </Link>
                 );

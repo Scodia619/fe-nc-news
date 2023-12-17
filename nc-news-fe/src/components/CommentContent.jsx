@@ -4,6 +4,8 @@ import { postCommentById } from "../../api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import add from '../assets/icons/arrow-right-circle.svg'
+
 const CommentContent = ({ comments, setComments }) => {
   const [comment, setComment] = useState("");
   const [showComments, setShowComments] = useState(false);
@@ -44,15 +46,20 @@ const CommentContent = ({ comments, setComments }) => {
       })
   };
 
+  const viewComments = () => {
+    if(showComments === false){setShowComments(true)}
+    else{setShowComments(false)}
+  }
+
   return (
     <section className="d-flex flex-column align-items-center m-4">
       <form
         className="d-flex flex-column align-items-center"
         onSubmit={handleSubmit}
       >
-        <div className="d-flex">
+        <div className="comment-input">
         <label htmlFor="comment">
-        <textarea
+        <textarea className="comment-input-field"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               disabled={isSubmitting}
@@ -60,12 +67,12 @@ const CommentContent = ({ comments, setComments }) => {
               cols={30} // Set the desired number of columns for the textarea
             />
           </label>
-          <button type="submit" disabled={isSubmitting}> {/* Disable button while submitting */}
-            {isSubmitting ? "Adding..." : "Add"}
+          <button className="button comment-submit" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Adding..." : <img src={add} className="comment-add-svg"/>}
           </button>
         </div>
       </form>
-      <button onClick={() => setShowComments(true)}>View All Comments</button>
+      <button className="button" onClick={viewComments}>{!showComments ? "View All Comments": "Hide Comments"}</button>
       {comments && comments.length > 0 && showComments ? (
         comments.map((comment) => {
           return <CommentCard key={comment.comment_id} comment={comment} />;

@@ -1,9 +1,9 @@
 const CommentVoting = ({currentComment}) => {
     return (
-        <section className="d-flex justify-content-around">
-            <button>Upvote</button>
+        <section className="comment-voting">
+            <button className="button">Upvote</button>
             <h1>{currentComment.votes}</h1>
-            <button>Downvote</button>
+            <button className="button">Downvote</button>
         </section>
     )
 }
