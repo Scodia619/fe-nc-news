@@ -1,36 +1,39 @@
 import { useEffect, useState } from "react"
-import {getAllArticles} from '../../api.js'
+import {getAllArticles, getArticlesWithQueries} from '../../api.js'
+import {useParams, useSearchParams} from 'react-router-dom'
 
 import ArticleCard from "./ArticleCard"
 import { Link } from "react-router-dom"
+import QueriesAndTopics from "./QueriesAndTopics.jsx"
 
 const ArticleContainer = () => {
-
-    const [articles, setArticles] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [articles, setArticles] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [params, setParams] = useState({params: {}})
 
     useEffect(() => {
-        getAllArticles().then((article) => {
-            setArticles(article)
-            setLoading(false)
-        })
-    }, []);
+        getArticlesWithQueries(params).then((article) => {
+            setArticles(article);
+            setLoading(false);
+        });
+    }, [params]);
 
-    if(loading){
-        return <h1>Loading</h1>
+    if (loading) {
+        return <h1>Loading</h1>;
     }
 
     return (
         <>
-            {articles.map(article => {
+        <QueriesAndTopics setParams={setParams} params={params} articles={articles}/>
+            {articles.map((article) => {
                 return (
-                    <Link key={article.article_id} to={`/${article.topic}/${encodeURIComponent(article.article_id)}`}>
+                    <Link className="article-link" key={article.article_id} to={`/${article.topic}/${encodeURIComponent(article.article_id)}`}>
                         <ArticleCard article={article} />
                     </Link>
-                )
+                );
             })}
         </>
-    )
-}
+    );
+};
 
 export default ArticleContainer
