@@ -1,11 +1,15 @@
 import CommentVoting from "./CommentVoting";
 import { deleteCommentById } from "../../api";
 import { ToastContainer, toast } from "react-toastify";
+import { useContext } from "react";
+
+import { UserContext } from "../contexts/UserContext";
+
 import "react-toastify/dist/ReactToastify.css";
 
 const CommentCard = ({ comment, setComments }) => {
 
-  const username = "tickle122"
+  const {user} = useContext(UserContext)
 
   const date = [];
   for (let i = 0; i < comment.created_at.length; i += 10) {
@@ -26,7 +30,7 @@ const CommentCard = ({ comment, setComments }) => {
   };
 
   const handleDelete = (commentId) => {
-    if(comment.author !== username){
+    if(comment.author !== user){
       notify("Not the author")
       return;
     }
@@ -53,7 +57,7 @@ const CommentCard = ({ comment, setComments }) => {
         </p>
       </div>
       <CommentVoting currentComment={comment} />
-      {comment.author === username ? (
+      {comment.author === user ? (
       <button className="button delete-btn"
         onClick={() => {
           handleDelete(comment.comment_id);
