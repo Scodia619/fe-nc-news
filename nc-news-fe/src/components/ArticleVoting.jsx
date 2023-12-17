@@ -16,10 +16,10 @@ const ArticleVoting = ({currentArticle}) => {
     }
 
     return (
-        <section className="d-flex justify-content-around">
-            <button onClick={()=>{handleVotes(1)}}>Upvote</button>
+        <section className="d-flex justify-content-between m-2">
+            <button className="button" onClick={()=>{handleVotes(1)}}>Upvote</button>
             <h1>{votes}</h1>
-            <button onClick={()=>{handleVotes(-1)}}>Downvote</button>
+            <button className="button" onClick={()=>{handleVotes(-1)}}>Downvote</button>
         </section>
     )
 }
