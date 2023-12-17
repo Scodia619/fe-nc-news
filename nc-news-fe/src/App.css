@@ -13,7 +13,7 @@ body{
     margin-bottom: 0.5em
 }
 
-#login{
+.header-links{
     text-decoration: none;
     color: white
 }
