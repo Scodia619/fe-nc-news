@@ -4,9 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CommentCard = ({ comment, setComments }) => {
-
-  const username = "tickle122"
-
   const date = [];
   for (let i = 0; i < comment.created_at.length; i += 10) {
     date.push(comment.created_at.slice(i, i + 10));
@@ -15,7 +12,7 @@ const CommentCard = ({ comment, setComments }) => {
   const notify = (message) => {
     toast(message, {
       position: "top-center",
-      autoClose: 1000,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -26,19 +23,12 @@ const CommentCard = ({ comment, setComments }) => {
   };
 
   const handleDelete = (commentId) => {
-    if(comment.author !== username){
-      notify("Not the author")
-      return;
-    }
     deleteCommentById(comment.comment_id).then(() => {
       notify("Comment Deleted");
       setComments((prevComments) => {
         return prevComments.filter(
           (comment) => comment.comment_id !== commentId
         );
-      }).catch(err => {
-        console.log(err)
-        notify("Something went wrong")
       });
     });
   };
@@ -53,7 +43,6 @@ const CommentCard = ({ comment, setComments }) => {
         </p>
       </div>
       <CommentVoting currentComment={comment} />
-      {comment.author === username ? (
       <button
         onClick={() => {
           handleDelete(comment.comment_id);
@@ -61,7 +50,6 @@ const CommentCard = ({ comment, setComments }) => {
       >
         Delete
       </button>
-      ): null}
       <ToastContainer
         position="top-center"
         autoClose={5000}
